@@ -1,39 +1,38 @@
 {
-    "name": "homebridge-nxtlevel",
-    "version": "1.0.0",
-    "description": "Homebridge plugin for NXTLEVEL app/NXTFOX units",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "homebridge -P . -U test"
-    },
-    "engines": {
-      "node": ">4.0.0",
-      "homebridge": ">=0.2.0"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/K1LL3R234/homebridge-nxtlevel.git"
-    },
-    "keywords": [
-      "homebridge-plugin",
-      "MQTT",
-      "homekit",
-      "Siri",
-      "IoT",
-      "security system",
-      "NXTLEVEL"
-    ],
-    "author": "Chris Posthumus",
-    "license": "Apache-2.0",
-    "bugs": {
-      "url": "https://github.com/K1LL3R234/homebridge-nxtlevel/issues"
-    },
-    "homepage": "https://github.com/K1LL3R234/homebridge-nxtlevel#readme",
-    "dependencies": {
-      "fakegato-history": "^0.6.1",
-      "homebridge-lib": "~5.1.4",
-      "mqtt": "^4.2.6"
-    }
+  "name": "homebridge-nxtlevel",
+  "version": "1.0.0",
+  "description": "Homebridge plugin for NXTLEVEL app/NXTFOX units",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "homebridge -P . -U test"
+  },
+  "engines": {
+    "node": ">4.0.0",
+    "homebridge": ">=0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K1LL3R234/homebridge-nxtlevel.git"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "MQTT",
+    "homekit",
+    "Siri",
+    "IoT",
+    "security system",
+    "NXTLEVEL"
+  ],
+  "author": "Chris Posthumus",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/K1LL3R234/homebridge-nxtlevel/issues"
+  },
+  "homepage": "https://github.com/K1LL3R234/homebridge-nxtlevel#readme",
+  "dependencies": {
+    "fakegato-history": "^0.6.1",
+    "homebridge-lib": "~5.1.4",
+    "mqtt": "^4.2.6"
   }
-  
+}
