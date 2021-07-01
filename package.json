@@ -1,6 +1,6 @@
 {
   "name": "homebridge-nxtlevel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Homebridge plugin for NXTLEVEL app/NXTFOX units",
   "main": "index.js",
   "scripts": {

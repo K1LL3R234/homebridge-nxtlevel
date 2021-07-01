@@ -318,7 +318,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
             }
 
             function state_Online() {
-                booleanState('online', config.topics.getOnline, true, isRecvValueOnline, isRecvValueOffline);
+                booleanState('online',config.IMEInr +'/' + config.topics.getOnline, true, isRecvValueOnline, isRecvValueOffline);
             }
 
             function integerCharacteristic(service, property, characteristic, setTopic, getTopic, options) {
@@ -487,24 +487,24 @@ function makeNxtLevel(log, accessoryConfig, api) {
 
             // Characteristic.Name
             function characteristic_Name(service) {
-                stringCharacteristic(service, 'name', Characteristic.Name, null, config.topics.getName, config.name);
+                stringCharacteristic(service, 'name', Characteristic.Name, null,config.IMEInr +'/' + config.topics.getName, config.name);
             }
 
 
 
             // Characteristic.StatusFault
             function characteristic_StatusFault(service) {
-                booleanCharacteristic(service, 'statusFault', Characteristic.StatusFault, null, config.topics.getStatusFault);
+                booleanCharacteristic(service, 'statusFault', Characteristic.StatusFault, null,config.IMEInr +'/' + config.topics.getStatusFault);
             }
 
             // Characteristic.StatusTampered
             function characteristic_StatusTampered(service) {
-                booleanCharacteristic(service, 'statusTampered', Characteristic.StatusTampered, null, config.topics.getStatusTampered);
+                booleanCharacteristic(service, 'statusTampered', Characteristic.StatusTampered, null, config.IMEInr +'/' +config.topics.getStatusTampered);
             }
 
             // Characteristic.StatusLowBattery
             function characteristic_StatusLowBattery(service) {
-                booleanCharacteristic(service, 'statusLowBattery', Characteristic.StatusLowBattery, null, config.topics.getStatusLowBattery);
+                booleanCharacteristic(service, 'statusLowBattery', Characteristic.StatusLowBattery, null,config.IMEInr +'/' + config.topics.getStatusLowBattery);
             }
 
 
@@ -514,7 +514,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 if (!values) {
                     values = ['SA', 'AA', 'NA', 'D', 'T'];
                 }
-                multiCharacteristic(service, 'currentState', Characteristic.SecuritySystemCurrentState, null, config.topics.getCurrentState, values, Characteristic.SecuritySystemCurrentState.DISARMED);
+                multiCharacteristic(service, 'currentState', Characteristic.SecuritySystemCurrentState, null,config.IMEInr +'/' + config.topics.getCurrentState, values, Characteristic.SecuritySystemCurrentState.DISARMED);
             }
 
             // Characteristic.SecuritySystemTargetState
@@ -523,7 +523,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 if (!values) {
                     values = ['SA', 'AA', 'NA', 'D'];
                 }
-                multiCharacteristic(service, 'targetState', Characteristic.SecuritySystemTargetState, config.IMEInr + config.topics.setTargetState, config.topics.getTargetState, values, Characteristic.SecuritySystemTargetState.DISARM);
+                multiCharacteristic(service, 'targetState', Characteristic.SecuritySystemTargetState,config.IMEInr +'/' + config.topics.setTargetState,config.IMEInr +'/' + config.topics.getTargetState, values, Characteristic.SecuritySystemTargetState.DISARM);
                 if (config.restrictTargetState) {
                     let characteristic = service.getCharacteristic(Characteristic.SecuritySystemTargetState);
                     characteristic.props.validValues = config.restrictTargetState;
@@ -533,7 +533,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
 
             // Characteristic.BatteryLevel
             function characteristic_BatteryLevel(service) {
-                integerCharacteristic(service, 'batteryLevel', Characteristic.BatteryLevel, null, config.IMEInr + config.topics.getBatteryLevel);
+                integerCharacteristic(service, 'batteryLevel', Characteristic.BatteryLevel, null,config.IMEInr +'/' + config.topics.getBatteryLevel);
             }
 
 
