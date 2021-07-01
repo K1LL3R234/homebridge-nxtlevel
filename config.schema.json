@@ -28,8 +28,9 @@
             "url": {
                 "type": "string",
                 "title": "URL",
-                "description": "URL of MQTT server (optional), default: 192.168.9.97:18883",
-                "placeholder": "192.168.9.97:18883"
+                "description": "URL of MQTT server (optional), default: mqtt://localhost:1883, Please change to 192.168.9.97:18883",
+                "placeholder": "192.168.9.97:18883",
+                "value": "192.168.9.97:18883"
             },
             "username": {
                 "type": "string",
@@ -95,11 +96,13 @@
                 "properties": {
                     "getOnline": {
                         "type": "string",
-                        "description": "Topic used to notify nxtlevel of 'online' status"
+                        "description": "Topic used to notify nxtlevel of 'online' status",
+                        "placeholder": "on/"
                     },
                     "setTargetState": {
                         "type": "string",
                         "description": "Topic published by nxtlevel to control 'target alarm state'",
+                        "placeholder": "control/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -107,6 +110,7 @@
                     "getTargetState": {
                         "type": "string",
                         "description": "Topic that may be published to notify HomeKit that the target alarm state has been changed externally.",
+                        "placeholder": "stat/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -114,6 +118,7 @@
                     "getCurrentState": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel that an alarm state has been achieved. HomeKit will expect current state to end up matching target state.",
+                        "placeholder": "alarm/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -125,6 +130,7 @@
                     "getStatusFault": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status fault'",
+                        "placeholder": "fault/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -132,6 +138,7 @@
                     "getStatusLowBattery": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status low battery'",
+                        "placeholder": "low_bat/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -139,6 +146,7 @@
                     "getBatteryLevel": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'battery level'",
+                        "placeholder": "bat_lvl/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -146,6 +154,7 @@
                     "getStatusTampered": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status tampered'",
+                        "placeholder": "tamp/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
@@ -171,7 +180,7 @@
                             "description": "Message"
                         }
                     }
-                } 
+                }
             },
             "onlineValue": {
                 "type": "string",
