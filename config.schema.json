@@ -28,8 +28,8 @@
             "url": {
                 "type": "string",
                 "title": "URL",
-                "description": "URL of MQTT server (optional), default: mqtt://localhost:1883",
-                "placeholder": "mqtt://localhost:1883"
+                "description": "URL of MQTT server (optional), default: 192.168.9.97:18883",
+                "placeholder": "192.168.9.97:18883"
             },
             "username": {
                 "type": "string",
@@ -42,6 +42,12 @@
                 "required": false,
                 "title": "Password",
                 "description": "Password for MQTT server (optional)"
+            },
+            "IMEInr": {
+                "type": "string",
+                "required": true,
+                "title": "IMEI nr",
+                "description": "IMEI nr from NXTFOX unit that corresponds with the NXTLEVEL APP"
             },
             "mqttOptions": {
                 "type": "object",

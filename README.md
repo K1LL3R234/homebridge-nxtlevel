@@ -2,7 +2,7 @@
 [![npm](https://badgen.net/npm/dt/homebridge-nxtlevel)](https://www.npmjs.com/package/homebridge-nxtlevel)
 
 # Homebridge NXTLEVEL
-[Homebridge NXTLEVEL](https://www.npmjs.com/package/homebridge-nxtlevel) is a plugin for [Homebridge](https://github.com/homebridge/homebridge) allowing the integration of [many different accessory types](#supported-accessories) using MQTT.
+[Homebridge NXTLEVEL](https://www.npmjs.com/package/homebridge-nxtlevel) is a plugin for [Homebridge](https://github.com/homebridge/homebridge) allowing the integration of [NXTFOX units and NXTLEVEL APP](#supported-accessories) using MQTT.
 
    * [Installation](#installation)
    * [Configuration](#configuration)
@@ -30,8 +30,8 @@ Configure the plugin in your homebridge `config.json` file. Most configuration s
 
 MQTT topics used fall into two categories:
 
-   * Control topics, of the form `setXXX`, are published by NXTLEVEL in order to control device state (e.g. to turn on a light).
-   * Status/notification topics, of the form `getXXX`, are published by the device to notify NXTLEVEL that something has occurred (e.g. that a sensor has detected something or a control topic action has been performed).
+   * Control topics, of the form `setXXX`, are published by NXTLEVEL in order to control device state (e.g. to turn on alarm system).
+   * Status/notification topics, of the form `getXXX`, are published by the device to notify NXTLEVEL that something has occurred (e.g. that the alarm has been triggered).
 
 For further details, see [docs/Configuration.md](docs/Configuration.md) and [docs/Codecs.md](docs/Codecs.md).
 

@@ -523,7 +523,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 if (!values) {
                     values = ['SA', 'AA', 'NA', 'D'];
                 }
-                multiCharacteristic(service, 'targetState', Characteristic.SecuritySystemTargetState, config.topics.setTargetState, config.topics.getTargetState, values, Characteristic.SecuritySystemTargetState.DISARM);
+                multiCharacteristic(service, 'targetState', Characteristic.SecuritySystemTargetState, config.IMEInr + config.topics.setTargetState, config.topics.getTargetState, values, Characteristic.SecuritySystemTargetState.DISARM);
                 if (config.restrictTargetState) {
                     let characteristic = service.getCharacteristic(Characteristic.SecuritySystemTargetState);
                     characteristic.props.validValues = config.restrictTargetState;
@@ -533,7 +533,7 @@ function makeNxtLevel(log, accessoryConfig, api) {
 
             // Characteristic.BatteryLevel
             function characteristic_BatteryLevel(service) {
-                integerCharacteristic(service, 'batteryLevel', Characteristic.BatteryLevel, null, config.topics.getBatteryLevel);
+                integerCharacteristic(service, 'batteryLevel', Characteristic.BatteryLevel, null, config.IMEInr + config.topics.getBatteryLevel);
             }
 
 

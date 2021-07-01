@@ -1,6 +1,6 @@
 {
   "name": "homebridge-nxtlevel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Homebridge plugin for NXTLEVEL app/NXTFOX units",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,8 @@
     "Siri",
     "IoT",
     "security system",
-    "NXTLEVEL"
+    "NXTLEVEL",
+    "NXTFOX"
   ],
   "author": "Chris Posthumus",
   "license": "Apache-2.0",
