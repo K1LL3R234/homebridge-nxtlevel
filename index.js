@@ -59,6 +59,8 @@ function makeNxtLevel(log, accessoryConfig, api) {
 
         function configToServices(config) {
 
+            const c_mySetContext = { nxtlevel: '---my-set-context--' };
+
             // The states of our characteristics
             var state = ctx.state = {};
 
@@ -685,5 +687,5 @@ module.exports = function (homebridge) {
     HistoryService = fakegatoHistory(homebridge);
     homebridgePath = homebridge.user.storagePath();
 
-    homebridge.registerAccessory("homebridge-nxtlevel", "NXTLevel", makeNxtLevel);
+    homebridge.registerAccessory("homebridge-nxtlevel", "nxtlevel", makeNxtLevel);
 }

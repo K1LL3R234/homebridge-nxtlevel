@@ -98,7 +98,7 @@ function init(params) {
     /**
      * Encode message before sending.
      * The output function may be called to deliver an encoded value for the property later.
-     * @param {string} message Message from mqttthing to be published to MQTT
+     * @param {string} message Message from nxtlevel to be published to MQTT
      * @param {object} info Object giving contextual information
      * @param {string} info.topic MQTT topic to be published
      * @param {string} info.property Property associated with publishing operation
