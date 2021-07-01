@@ -229,6 +229,7 @@
                 "url",
                 "username",
                 "password",
+                "IMEInr",
                 "logMqtt",
                 "mqttOptions.keepalive",
                 "mqttPubOptions.retain",
