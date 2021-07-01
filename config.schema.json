@@ -151,6 +151,14 @@
                             "functionBody": "return ['securitySystem'].includes(model.type);"
                         }
                     },
+                    "getChargingState": {
+                        "type": "string",
+                        "description": "Topic used to notify nxtlevel of 'AC fail'",
+                        "placeholder": "ac/",
+                        "condition": {
+                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                        }
+                    },
                     "getStatusTampered": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status tampered'",
@@ -199,6 +207,21 @@
                 "examples": [
                     "Offline"
                 ]
+            },
+            "chargingStateValues": {
+                "type": "array",
+                "minContains": 1,
+                "title": "Charging State Values",
+                "description": "An explanation about the purpose of this instance.",
+                "items": {
+                    "type": "string",
+                    "title": "Items",
+                    "description": "An explanation about the purpose of this instance.",
+                    "placeholder": "NotCharging, Charging, or NotChargeable"
+                },
+                "condition": {
+                    "functionBody": "return ['securitySystem'].includes(model.type);"
+                }
             },
             "confirmationPeriodms": {
                 "type": "integer",
@@ -256,6 +279,7 @@
             "items": [
                 "topics.getBatteryLevel",
                 "topics.getStatusLowBattery",
+                "topics.getChargingState",
                 "topics.getStatusTampered",
                 "topics.getCurrentState",
                 "topics.getStatusFault",

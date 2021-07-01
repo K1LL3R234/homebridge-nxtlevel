@@ -536,12 +536,24 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 integerCharacteristic(service, 'batteryLevel', Characteristic.BatteryLevel, null,config.IMEInr +'/' + config.topics.getBatteryLevel);
             }
 
+            // Characteristic.ChargingState
+            function characteristic_ChargingState( service ) {
+                let values = config.chargingStateValues;
+                if( !values ) {
+                    values = [ 'NOT_CHARGING', 'CHARGING', 'NOT_CHARGEABLE' ];
+                }
+                multiCharacteristic( service, 'chargingState', Characteristic.ChargingState, null, config.topics.getChargingState, values, Characteristic.ChargingState.NOT_CHARGING );
+            }
+
 
 
             // add battery characteristics
             function addBatteryCharacteristics(service) {
                 if (config.topics.getBatteryLevel) {
                     characteristic_BatteryLevel(service);
+                }
+                if( config.topics.getChargingState ) {
+                    characteristic_ChargingState( service );
                 }
                 if (config.topics.getStatusLowBattery) {
                     characteristic_StatusLowBattery(service);
