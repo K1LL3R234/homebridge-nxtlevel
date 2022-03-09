@@ -28,9 +28,9 @@
             "url": {
                 "type": "string",
                 "title": "URL",
-                "description": "URL of MQTT server (optional), default: mqtt://localhost:1883, Please change to 192.168.9.97:18883",
-                "placeholder": "192.168.9.97:18883",
-                "value": "192.168.9.97:18883"
+                "description": "URL of MQTT server (optional), default: mqtt://localhost:1883, Please change to app.nxtfox.com:18883",
+                "placeholder": "app.nxtfox.com:18883",
+                "value": "app.nxtfox.com:18883"
             },
             "username": {
                 "type": "string",
@@ -97,14 +97,16 @@
                     "getOnline": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'online' status",
-                        "placeholder": "on/"
+                        "placeholder": "on/",
+                        "value": "on/"
                     },
                     "setTargetState": {
                         "type": "string",
                         "description": "Topic published by nxtlevel to control 'target alarm state'",
                         "placeholder": "control/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "control/"
                         }
                     },
                     "getTargetState": {
@@ -112,7 +114,8 @@
                         "description": "Topic that may be published to notify HomeKit that the target alarm state has been changed externally.",
                         "placeholder": "stat/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "stat/"
                         }
                     },
                     "getCurrentState": {
@@ -120,7 +123,8 @@
                         "description": "Topic used to notify nxtlevel that an alarm state has been achieved. HomeKit will expect current state to end up matching target state.",
                         "placeholder": "alarm/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "alarm/"
                         }
                     },
                     "getName": {
@@ -132,7 +136,8 @@
                         "description": "Topic used to notify nxtlevel of 'status fault'",
                         "placeholder": "fault/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "fault/"
                         }
                     },
                     "getStatusLowBattery": {
@@ -140,15 +145,17 @@
                         "description": "Topic used to notify nxtlevel of 'status low battery'",
                         "placeholder": "low_bat/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "low_bat/"
                         }
                     },
                     "getBatteryLevel": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'battery level'",
-                        "placeholder": "bat_lvl/",
+                        "placeholder": "bat/lvl/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "bat/lvl/"
                         }
                     },
                     "getChargingState": {
@@ -156,7 +163,8 @@
                         "description": "Topic used to notify nxtlevel of 'AC fail'",
                         "placeholder": "ac/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "ac/"
                         }
                     },
                     "getStatusTampered": {
@@ -164,7 +172,8 @@
                         "description": "Topic used to notify nxtlevel of 'status tampered'",
                         "placeholder": "tamp/",
                         "condition": {
-                            "functionBody": "return ['securitySystem'].includes(model.type);"
+                            "functionBody": "return ['securitySystem'].includes(model.type);",
+                            "value": "tamp/"
                         }
                     }
                 }
