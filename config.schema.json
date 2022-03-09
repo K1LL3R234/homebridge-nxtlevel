@@ -8,7 +8,7 @@
                 "type": "string",
                 "title": "Type",
                 "description": "Select the accessory type.",
-                "placeholder": "lightbulb",
+                "placeholder": "securitySystem",
                 "oneOf": [
                     {
                         "title": "Security System",
