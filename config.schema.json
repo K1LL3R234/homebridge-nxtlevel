@@ -23,11 +23,13 @@
                 "minLength": 1,
                 "required": true,
                 "title": "Name",
-                "description": "Name of accessory, as displayed in HomeKit."
+                "description": "Name of accessory, as displayed in HomeKit.",
+                "placeholder": "Home Alarm"
             },
             "url": {
                 "type": "string",
                 "title": "URL",
+                "required": true,
                 "description": "URL of MQTT server (optional), default: mqtt://localhost:1883, Please change to app.nxtfox.com:18883",
                 "placeholder": "app.nxtfox.com:18883",
                 "value": "app.nxtfox.com:18883"
@@ -48,7 +50,7 @@
                 "type": "string",
                 "required": true,
                 "title": "IMEI nr",
-                "description": "IMEI nr from NXTFOX unit that corresponds with the NXTLEVEL APP"
+                "description": "IMEI nr from NXTFOX unit that corresponds with the NXTLEVEL APP or on the box"
             },
             "mqttOptions": {
                 "type": "object",

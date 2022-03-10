@@ -23,7 +23,8 @@
     "IoT",
     "security system",
     "NXTLEVEL",
-    "NXTFOX"
+    "NXTFOX",
+    "alarm control"
   ],
   "author": "Chris Posthumus",
   "license": "Apache-2.0",
