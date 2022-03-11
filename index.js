@@ -545,8 +545,6 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 multiCharacteristic(service, 'chargingState', Characteristic.ChargingState, null, config.IMEInr + '/' + config.topics.getChargingState, values, Characteristic.ChargingState.NOT_CHARGING);
             }
 
-
-
             // add battery characteristics
             function addBatteryCharacteristics(service) {
                 if (config.topics.getBatteryLevel) {
@@ -558,6 +556,63 @@ function makeNxtLevel(log, accessoryConfig, api) {
                 if (config.topics.getStatusLowBattery) {
                     characteristic_StatusLowBattery(service);
                 }
+            }
+
+            // Characteristic.TargetPosition
+            function characteristic_TargetPosition( service ) {
+                integerCharacteristic( service, 'targetPosition', Characteristic.TargetPosition, config.topics.setTargetPosition, config.topics.getTargetPosition, {
+                    initialValue: config.minPosition || 0,
+                    minValue: config.minPosition,
+                    maxValue: config.maxPosition
+                } );
+            }
+
+            // Characteristic.CurrentPosition
+            function characteristic_CurrentPosition( service ) {
+                integerCharacteristic( service, 'currentPosition', Characteristic.CurrentPosition, null, config.topics.getCurrentPosition, {
+                    initialValue: config.minPosition || 0,
+                    minValue: config.minPosition,
+                    maxValue: config.maxPosition
+                } );
+            }
+
+            // Characteristic.PositionState
+            function characteristic_PositionState( service ) {
+                let values = config.positionStateValues;
+                if( !values ) {
+                    values = [ 'DECREASING', 'INCREASING', 'STOPPED' ];
+                }
+                multiCharacteristic( service, 'positionState', Characteristic.PositionState, null, config.topics.getPositionState, values, Characteristic.PositionState.STOPPED );
+            }
+
+            // Characteristic.HoldPosition
+            function characteristic_HoldPosition( service ) {
+                booleanCharacteristic( service, 'holdPosition', Characteristic.HoldPosition, config.topics.setHoldPosition, null, false );
+            }
+            
+            // Characteristic.TargetHorizontalTiltAngle
+            function Characteristic_TargetHorizontalTiltAngle( service ) {
+                integerCharacteristic( service, 'targetHorizontalTiltAngle', Characteristic.TargetHorizontalTiltAngle, config.topics.setTargetHorizontalTiltAngle, config.topics.getTargetHorizontalTiltAngle );
+            }
+
+            // Characteristic.CurrentHorizontalTiltAngle
+            function Characteristic_CurrentHorizontalTiltAngle( service ) {
+                integerCharacteristic( service, 'currentHorizontalTiltAngle', Characteristic.CurrentHorizontalTiltAngle, null, config.topics.getCurrentHorizontalTiltAngle );
+            }
+
+            // Characteristic.TargetVerticalTiltAngle
+            function Characteristic_TargetVerticalTiltAngle( service ) {
+                integerCharacteristic( service, 'targetVerticalTiltAngle', Characteristic.TargetVerticalTiltAngle, config.topics.setTargetVerticalTiltAngle, config.topics.getTargetVerticalTiltAngle );
+            }
+
+            // Characteristic.CurrentVerticalTiltAngle
+            function Characteristic_CurrentVerticalTiltAngle( service ) {
+                integerCharacteristic( service, 'currentVerticalTiltAngle', Characteristic.CurrentVerticalTiltAngle, null, config.topics.getCurrentVerticalTiltAngle );
+            }
+
+            // Characteristic.ObstructionDetected
+            function characteristic_ObstructionDetected( service ) {
+                booleanCharacteristic( service, 'obstructionDetected', Characteristic.ObstructionDetected, null, config.topics.getObstructionDetected, false );
             }
 
             let name = config.name;
@@ -584,6 +639,29 @@ function makeNxtLevel(log, accessoryConfig, api) {
             } else if (configType == 'battery') {
                 service = new Service.BatteryService(name);
                 addBatteryCharacteristics(service);
+            } else if( configType == "windowCovering" ) {
+                service = new Service.WindowCovering( name, subtype );
+                characteristic_CurrentPosition( service );
+                characteristic_TargetPosition( service );
+                characteristic_PositionState( service );
+                if( config.topics.setHoldPosition ) {
+                    characteristic_HoldPosition( service );
+                }
+                if( config.topics.getTargetHorizontalTiltAngle || config.topics.setTargetHorizontalTiltAngle ) {
+                    Characteristic_TargetHorizontalTiltAngle( service );
+                }
+                if( config.topics.getTargetVerticalTiltAngle || config.topics.setTargetVerticalTiltAngle ) {
+                    Characteristic_TargetVerticalTiltAngle( service );
+                }
+                if( config.topics.getCurrentHorizontalTiltAngle ) {
+                    Characteristic_CurrentHorizontalTiltAngle( service );
+                }
+                if( config.topics.getCurrentVerticalTiltAngle ) {
+                    Characteristic_CurrentVerticalTiltAngle( service );
+                }
+                if( config.topics.getObstructionDetected ) {
+                    characteristic_ObstructionDetected( service );
+                }
             } else {
                 log("ERROR: Unrecognized type: " + configType);
             }

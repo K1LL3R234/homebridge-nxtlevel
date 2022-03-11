@@ -15,6 +15,12 @@
                         "enum": [
                             "securitySystem"
                         ]
+                    },
+                    {
+                        "title": "Window Covering",
+                        "enum": [
+                            "windowCovering"
+                        ]
                     }
                 ]
             },
@@ -24,7 +30,7 @@
                 "required": true,
                 "title": "Name",
                 "description": "Name of accessory, as displayed in HomeKit.",
-                "placeholder": "Home Alarm"
+                "placeholder": "Home Alarm inside"
             },
             "url": {
                 "type": "string",
@@ -105,28 +111,28 @@
                     "setTargetState": {
                         "type": "string",
                         "description": "Topic published by nxtlevel to control 'target alarm state'",
-                        "placeholder": "control/",
+                        "placeholder": "control/1/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);",
-                            "value": "control/"
+                            "value": "control/1/"
                         }
                     },
                     "getTargetState": {
                         "type": "string",
                         "description": "Topic that may be published to notify HomeKit that the target alarm state has been changed externally.",
-                        "placeholder": "stat/",
+                        "placeholder": "stat/1/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);",
-                            "value": "stat/"
+                            "value": "stat/1/"
                         }
                     },
                     "getCurrentState": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel that an alarm state has been achieved. HomeKit will expect current state to end up matching target state.",
-                        "placeholder": "alarm/",
+                        "placeholder": "alarm/1/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);",
-                            "value": "alarm/"
+                            "value": "alarm/1/"
                         }
                     },
                     "getName": {
@@ -136,10 +142,10 @@
                     "getStatusFault": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status fault'",
-                        "placeholder": "fault/",
+                        "placeholder": "fault/1/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);",
-                            "value": "fault/"
+                            "value": "fault/1/"
                         }
                     },
                     "getStatusLowBattery": {
@@ -172,10 +178,95 @@
                     "getStatusTampered": {
                         "type": "string",
                         "description": "Topic used to notify nxtlevel of 'status tampered'",
-                        "placeholder": "tamp/",
+                        "placeholder": "tamp/1/",
                         "condition": {
                             "functionBody": "return ['securitySystem'].includes(model.type);",
-                            "value": "tamp/"
+                            "value": "tamp/1/"
+                        }
+                    },
+
+                    "getCurrentHorizontalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'current horizontal tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getCurrentPosition": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'current position'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getCurrentVerticalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'current vertical tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "setHoldPosition": {
+                        "type": "string",
+                        "description": "Topic published by mqttthing to control 'hold position'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getObstructionDetected": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'obstruction detected'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getPositionState": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'position state'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getTargetHorizontalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'target horizontal tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "setTargetHorizontalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic published by mqttthing to control 'target horizontal tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getTargetPosition": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'target position'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "setTargetPosition": {
+                        "type": "string",
+                        "description": "Topic published by mqttthing to control 'target position'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "getTargetVerticalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic used to notify mqttthing of 'target vertical tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
+                        }
+                    },
+                    "setTargetVerticalTiltAngle": {
+                        "type": "string",
+                        "description": "Topic published by mqttthing to control 'target vertical tilt angle'",
+                        "condition": {
+                            "functionBody": "return ['windowCovering'].includes(model.type);"
                         }
                     }
                 }
@@ -250,6 +341,22 @@
                 "type": "boolean",
                 "title": "Confirmation Indicate Offline",
                 "description": "Indicate offline ('No Response') when confirmation message not received"
+            },
+            "minPosition": {
+                "type": "integer",
+                "title": "Minimum position value",
+                "description": "Minimum position value for target position and current position",
+                "condition": {
+                    "functionBody": "return ['windowCovering'].includes(model.type);"
+                }
+            },
+            "maxPosition": {
+                "type": "integer",
+                "title": "Maximum position value",
+                "description": "Maximum position value for target position and current position",
+                "condition": {
+                    "functionBody": "return ['windowCovering'].includes(model.type);"
+                }
             }
         }
     },
@@ -296,7 +403,20 @@
                 "topics.getStatusFault",
                 "topics.getTargetState",
                 "topics.setTargetState",
-                "topics.getOnline"
+                "topics.getOnline",
+
+                "topics.getCurrentHorizontalTiltAngle",
+                "topics.getCurrentPosition",
+                "topics.getCurrentVerticalTiltAngle",
+                "topics.setHoldPosition",
+                "topics.getObstructionDetected",
+                "topics.getPositionState",
+                "topics.getTargetHorizontalTiltAngle",
+                "topics.setTargetHorizontalTiltAngle",
+                "topics.getTargetPosition",
+                "topics.setTargetPosition",
+                "topics.getTargetVerticalTiltAngle",
+                "topics.setTargetVerticalTiltAngle"
             ]
         },
         {
@@ -306,6 +426,8 @@
             "items": [
                 "onValue",
                 "offValue",
+                "minPosition",
+                "maxPosition",
                 "confirmationPeriodms",
                 "retryLimit",
                 "confirmationIndicateOffline",
