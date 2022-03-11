@@ -1,4 +1,4 @@
-name: publish
+name: homebridge-nxtlevel
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
     release:
-        name: publish
+        name: homebridge-nxtlevel
         runs-on: ubuntu-latest
         steps:
             - name: checkout
@@ -17,7 +17,7 @@ jobs:
               with:
                   node-version: 16
                   registry-url: https://registry.npmjs.org/
-            - name: publish
-              run: npm publish --access public
+            - name: homebridge-nxtlevel
+              run: npm homebridge-nxtlevel --access public
               env:
                 NODE_AUTH_TOKEN:${{secrets.npm_token}}
